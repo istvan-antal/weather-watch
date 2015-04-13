@@ -21,7 +21,15 @@ class GoogleMaps {
             )
         ));
         
-        return $response->json();
+        $responseValue = $response->json();
+        
+        $coordinates = $responseValue['results'][0]['geometry']['location'];
+        
+        return array(
+            'formattedAddress' => $responseValue['results'][0]['formatted_address'],
+            'latitude' => $coordinates['lat'],
+            'longitude' => $coordinates['lng']
+        );
     }
     
 }

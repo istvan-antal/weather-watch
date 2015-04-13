@@ -1,5 +1,21 @@
-html, body, #map-canvas {
-    height: 500px;
-    margin: 0;
-    padding: 0;
+#search-form {
+    margin: 20px 0;
+}
+
+#map-canvas {
+    height: 200px;
+}
+
+#tempature {
+    font-size: 50px;
+    margin-top: 50px;
+}
+
+#unit-selector {
+    margin-top: 20px;
+}
+
+.weather-icon {
+    font-size: 100px;
+    margin-top: 50px;
 }

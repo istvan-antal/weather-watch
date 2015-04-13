@@ -1,4 +1,5 @@
 /config.php
+/web/bower_components
 /vendor
 /dev/blueprint
 /nbproject

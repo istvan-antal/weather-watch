@@ -1,0 +1,13 @@
+{
+  "name": "weather-watch",
+  "version": "0.0.1",
+  "homepage": "https://github.com/istvan-antal/weather-watch",
+  "authors": [
+    "Antal István Miklós <istvan.m.antal@gmail.com>"
+  ],
+  "license": "GPL2",
+  "private": true,
+  "dependencies": {
+    "weather-icons": "~1.3.2"
+  }
+}

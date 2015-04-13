@@ -4,7 +4,6 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Client\GoogleMaps;
@@ -18,13 +17,11 @@ $app->get('/weather', function (Application $app, Request $request) {
     $googleMapsApi = new GoogleMaps();
     $forecastApi = new Forecast($app['forecast.io.api.key']);
     
-    $geocodeResponse = $googleMapsApi->geocodeAddress($request->get('address'));
+    $coordinates = $googleMapsApi->geocodeAddress($request->get('address'));
     
-    $coordinates = $geocodeResponse['results'][0]['geometry']['location'];
+    $forecast = $forecastApi->fetchForecast($coordinates['latitude'], $coordinates['longitude']);
     
-    $result = $forecastApi->fetchForecast($coordinates['lat'], $coordinates['lng']);
-    
-    return new JsonResponse($result);
+    return new JsonResponse(array_merge($coordinates, $forecast));
 });
 
 $app->run();

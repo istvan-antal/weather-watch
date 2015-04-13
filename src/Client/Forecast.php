@@ -17,7 +17,13 @@ class Forecast {
     public function fetchForecast($latitude, $longitude) {
         $response = $this->client->get("$latitude,$longitude");
         
-        return $response->json();
+        $responseValue = $response->json()['currently'];
+        
+        return array(
+            'summary' => $responseValue['summary'],
+            'icon' => $responseValue['icon'],
+            'temperature' => $responseValue['temperature'],
+        );
     }
     
 }
