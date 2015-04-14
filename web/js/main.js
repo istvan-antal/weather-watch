@@ -15,7 +15,7 @@ $(function () {
         map,        
         iconMap;
 
-    mapOptions = {
+    mapOptions = {   
         center: {
             lat: -34.397,
             lng: 150.644
