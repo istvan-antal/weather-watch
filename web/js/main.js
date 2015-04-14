@@ -1,3 +1,5 @@
+/* global google */
+
 $(function () {
     var searchForm = $('#search-form'),
         searchField = $('#search-field'),
@@ -5,6 +7,9 @@ $(function () {
         tempature = $('#tempature'),
         results = $('#results'),
         summary = $('#summary'),
+        unitSelector = $('#unit-selector'),
+        unitSelectorButtons = unitSelector.find('button'),
+        currentUnit = 'fahrenheit',
         currentData,
         mapOptions,
         map,        
@@ -57,12 +62,25 @@ $(function () {
         return false;
     });
     
+    unitSelector.on('click', 'button', function () {
+        var element = $(this);
+        
+        currentUnit = element.data('value');
+        unitSelectorButtons.removeClass('active');
+        element.addClass('active');
+        
+        renderCurrentData();
+    });
+    
     function renderCurrentData() {
         if (!currentData) {
             return;
         }
         
-        tempature.html(currentData.temperature + '<i class="wi wi-fahrenheit"/>');
+        tempature.html(
+            Math.round(currentData.temperature[currentUnit]) +
+            '<i class="wi wi-' + currentUnit + '"/>'
+        );
         summary.text(currentData.summary);
         icon.attr('class', getWeatherIconClass(currentData.icon));
 

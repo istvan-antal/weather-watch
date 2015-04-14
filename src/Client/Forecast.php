@@ -4,6 +4,8 @@ namespace Client;
 
 use GuzzleHttp\Client;
 
+use Unit\Temperature;
+
 class Forecast {
     
     private $client;
@@ -19,10 +21,15 @@ class Forecast {
         
         $responseValue = $response->json()['currently'];
         
+        $temperatureConverter = new Temperature();
+        
         return array(
             'summary' => $responseValue['summary'],
             'icon' => $responseValue['icon'],
-            'temperature' => $responseValue['temperature'],
+            'temperature' => array(
+                'fahrenheit' => $responseValue['temperature'],
+                'celsius' => $temperatureConverter->fahrenheitToCelsius($responseValue['temperature'])
+            )
         );
     }
     
