@@ -1,17 +1,20 @@
 build: check
-	composer install
 	cd web; bower install
 
 infrastructure:
 	cd dev; ./launch.py
 
-check: node_modules
+check: node_modules vendor
 	./node_modules/.bin/jshint web/js/*.js
 	./node_modules/.bin/jscs web/js/*.js
 	./node_modules/.bin/csslint --ignore=ids --errors=empty-rules web/css/*.css
 	./vendor/bin/phpcs --extensions=php --standard=dev/CC -s src/
 	./vendor/bin/phpmd src/ text dev/phpmd.xml
 	./vendor/bin/phpunit src/
+	
+vendor: composer.json
+	composer install
+	touch vendor
 	
 node_modules: package.json
 	npm install
