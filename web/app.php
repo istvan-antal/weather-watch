@@ -13,7 +13,7 @@ $app = new Application();
 
 require '../config.php';
 
-$app->get('/weather', function (Application $app, Request $request) {
+$app->get('/api/weather', function (Application $app, Request $request) {
     $googleMapsApi = new GoogleMaps();
     $forecastApi = new Forecast($app['forecast.io.api.key']);
     

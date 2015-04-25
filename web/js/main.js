@@ -50,7 +50,7 @@ $(function () {
 
     searchForm.submit(function () {
         $.ajax({
-            url: '/weather',
+            url: '/api/weather',
             data: {
                 address: searchField.val()
             }
