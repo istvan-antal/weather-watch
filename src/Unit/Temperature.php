@@ -12,4 +12,12 @@ class Temperature {
         return ($fahrenheit - 32) * 5/9;
     }
     
+    public function celsiusToFahrenheit($celsius) {
+        if (!is_numeric($celsius)) {
+            throw new \Exception('Argument is not a number');
+        }
+        
+        return $celsius * 9/5 + 32;
+    }
+    
 }

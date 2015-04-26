@@ -7,6 +7,7 @@ $(function () {
         tempature = $('#tempature'),
         results = $('#results'),
         summary = $('#summary'),
+        comparism = $("#comparism"),
         unitSelector = $('#unit-selector'),
         unitSelectorButtons = unitSelector.find('button'),
         currentUnit = 'fahrenheit',
@@ -82,6 +83,22 @@ $(function () {
             '<i class="wi wi-' + currentUnit + '"/>'
         );
         summary.text(currentData.summary);
+        
+        var comparismText  = '',
+            temperatureDiff;
+    
+        temperatureDiff = currentData.temperature.celsius - currentData.yesterday.temperature.celsius;
+        
+        if (temperatureDiff < 0) {
+            comparismText = 'colder than yesterday'
+        }
+        
+        if (temperatureDiff > 0) {
+            comparismText = 'warmer than yesterday'
+        }
+        
+        comparism.text(comparismText);
+        
         icon.attr('class', getWeatherIconClass(currentData.icon));
 
         map.setCenter({

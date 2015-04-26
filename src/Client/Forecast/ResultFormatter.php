@@ -5,19 +5,20 @@ namespace Client\Forecast;
 use Unit\Temperature;
 
 class ResultFormatter {
-    
+
     public function formatResult($responseValue) {
-        $data = $responseValue['currently'];
+        $currentData = $responseValue['currently'];
         
         $temperatureConverter = new Temperature();
         
         return array(
-            'summary' => $data['summary'],
-            'icon' => $data['icon'],
+            'summary' => $currentData['summary'],
+            'icon' => $currentData['icon'],
             'temperature' => array(
-                'fahrenheit' => $data['temperature'],
-                'celsius' => $temperatureConverter->fahrenheitToCelsius($data['temperature'])
-            )
+                'fahrenheit' => $temperatureConverter->celsiusToFahrenheit($currentData['temperature']),
+                'celsius' => $currentData['temperature']
+            ),
+            'daily' => $responseValue['daily']['data']
         );
     }
     
