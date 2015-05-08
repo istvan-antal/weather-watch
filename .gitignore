@@ -1,3 +1,4 @@
+/Makefile.config
 /config.php
 /node_modules
 /web/bower_components

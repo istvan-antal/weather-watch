@@ -11,6 +11,7 @@
 ```bash
 make init-dev
 make build
+echo -e 'TARGET_HOST := yourhost\nTARGET_DIR := /path/to/weather-watch' > Makefile.config1
 ```
 
 Customize: config.php

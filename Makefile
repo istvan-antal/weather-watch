@@ -1,5 +1,11 @@
+ifneq ($(wildcard Makefile.config),) 
+    include Makefile.config
+endif
+
 build: check web/bower_components
-	
+
+deploy: build
+	ssh $(TARGET_HOST) 'cd $(TARGET_DIR); git pull; make'
 
 infrastructure:
 	cd dev; ./launch.py
