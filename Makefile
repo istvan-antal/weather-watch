@@ -1,5 +1,5 @@
-build: check
-	cd web; bower install
+build: check web/bower_components
+	
 
 infrastructure:
 	cd dev; ./launch.py
@@ -11,6 +11,9 @@ check: node_modules vendor
 	./vendor/bin/phpcs --extensions=php --standard=dev/CC -s src/
 	./vendor/bin/phpmd src/ text dev/phpmd.xml
 	./vendor/bin/phpunit src/
+	
+web/bower_components: web/bower.json
+	cd web; bower install
 	
 vendor: composer.json
 	composer install

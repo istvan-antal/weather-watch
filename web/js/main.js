@@ -7,7 +7,7 @@ $(function () {
         tempature = $('#tempature'),
         results = $('#results'),
         summary = $('#summary'),
-        comparism = $("#comparism"),
+        comparism = $('#comparism'),
         unitSelector = $('#unit-selector'),
         unitSelectorButtons = unitSelector.find('button'),
         currentUnit = 'fahrenheit',
@@ -87,14 +87,15 @@ $(function () {
         var comparismText  = '',
             temperatureDiff;
     
-        temperatureDiff = currentData.temperature.celsius - currentData.yesterday.temperature.celsius;
+        temperatureDiff = currentData.temperature.celsius -
+                          currentData.yesterday.temperature.celsius;
         
         if (temperatureDiff < 0) {
-            comparismText = 'colder than yesterday'
+            comparismText = 'colder than yesterday';
         }
         
         if (temperatureDiff > 0) {
-            comparismText = 'warmer than yesterday'
+            comparismText = 'warmer than yesterday';
         }
         
         comparism.text(comparismText);
