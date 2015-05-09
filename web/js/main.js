@@ -1,4 +1,4 @@
-/* global google */
+/* global google, api, iconMap */
 
 $(function () {
     var searchForm = $('#search-form'),
