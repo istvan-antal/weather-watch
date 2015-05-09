@@ -1,5 +1,8 @@
 /Makefile.config
 /config.php
+/web/shared/*.js
+/web/angular2/*.js
+/web/angular2/typings
 /node_modules
 /web/bower_components
 /vendor
