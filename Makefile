@@ -17,6 +17,7 @@ web/angular2/typings: web/angular2/tsd.json
 	touch web/angular2/typings
 
 deploy: build
+	git push
 	ssh $(TARGET_HOST) 'cd $(TARGET_DIR); git pull; make'
 
 infrastructure:
