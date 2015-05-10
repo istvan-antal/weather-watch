@@ -16,6 +16,12 @@ web/angular2/typings: web/angular2/tsd.json
 	cd web/angular2; ../../node_modules/.bin/tsd rebundle
 	touch web/angular2/typings
 
+clean:
+	rm -fr node_modules
+	rm -fr web/bower_components
+	rm -fr web/angular2/typings
+	rm -fr web/shared/typings
+
 deploy: build
 	git push
 	ssh $(TARGET_HOST) 'cd $(TARGET_DIR); git pull; make'
