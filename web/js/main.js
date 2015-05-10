@@ -1,15 +1,13 @@
 /* global WW  */
 
 $(function () {
-    var searchForm = $('#search-form'),
-        searchField = $('#search-field'),
+    var searchBox = new WW.SearchBox($('#search-form')),
         unitSelector = new WW.ButtonGroupSelect($('#unit-selector')),
         model = new WW.WeatherModel(),
         display = new WW.WeatherDisplay($('#weather-display'), model.getUnit());
 
-    searchForm.submit(function () {
-        model.setAddress(searchField.val());
-        return false;
+    searchBox.onValueEnter(function (value) {
+        model.setAddress(value);
     });
     
     unitSelector.onValueUpdate(function (value) {
