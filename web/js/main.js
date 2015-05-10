@@ -5,9 +5,8 @@ $(function () {
         searchField = $('#search-field'),
         unitSelector = $('#unit-selector'),
         unitSelectorButtons = unitSelector.find('button'),
-        currentUnit = 'fahrenheit',
-        display = new WW.WeatherDisplay($('#weather-display'), currentUnit),
-        model = new WW.WeatherModel();
+        model = new WW.WeatherModel(),
+        display = new WW.WeatherDisplay($('#weather-display'), model.getUnit());
 
     searchForm.submit(function () {
         model.setAddress(searchField.val());
@@ -17,16 +16,17 @@ $(function () {
     model.onDataUpdate(function (data) {
         display.setData(data);
     });
+    
+    model.onUnitUpdate(function (unit) {
+        display.setUnit(unit);
+    });
 
     unitSelector.on('click', 'button', function () {
         var element = $(this);
 
-        currentUnit = element.data('value');
+        model.setUnit(element.data('value'));
         
         unitSelectorButtons.removeClass('active');
-        element.addClass('active');
-
-        display.setUnit(currentUnit);
+        element.addClass('active');        
     });
-    
 });
