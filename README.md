@@ -25,3 +25,10 @@ and run:
 ```bash
 make infrastructure 
 ```
+
+Git  hook setup
+===============
+```bash
+printf '#!/bin/bash\nmake check\n' > .git/hooks/pre-commit; chmod +x .git/hooks/pre-commit
+printf '#!/bin/bash\nmake' > .git/hooks/post-merge; chmod +x .git/hooks/post-merge
+```
