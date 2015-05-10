@@ -1,4 +1,4 @@
-/* global api, WW  */
+/* global WW  */
 
 $(function () {
     var searchForm = $('#search-form'),
@@ -6,14 +6,16 @@ $(function () {
         unitSelector = $('#unit-selector'),
         unitSelectorButtons = unitSelector.find('button'),
         currentUnit = 'fahrenheit',
-        display = new WW.WeatherDisplay($('#weather-display'), currentUnit);
+        display = new WW.WeatherDisplay($('#weather-display'), currentUnit),
+        model = new WW.WeatherModel();
 
     searchForm.submit(function () {
-        api.fetchCurrentWeather(searchField.val()).then(function (data) {
-            display.setData(data);
-        });
-
+        model.setAddress(searchField.val());
         return false;
+    });
+    
+    model.onDataUpdate(function (data) {
+        display.setData(data);
     });
 
     unitSelector.on('click', 'button', function () {
