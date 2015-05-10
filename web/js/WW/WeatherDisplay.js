@@ -45,7 +45,7 @@ WW.WeatherDisplay.prototype._render = function () {
         temperature = this._temperature,
         icon = this._icon,
         summary = this._summary,
-        comparism = this._comparism,
+        
         currentData = this._data;
     
     if (!currentData) {
@@ -58,7 +58,22 @@ WW.WeatherDisplay.prototype._render = function () {
     );
     summary.text(currentData.summary);
 
-    var comparismText  = '',
+    this._renderComparism();
+
+    icon.attr('class', this._getWeatherIconClass(currentData.icon));
+
+    map.setCenter({
+        lat: currentData.latitude,
+        lng: currentData.longitude
+    });
+
+    rootView.removeClass('invisible');
+};
+
+WW.WeatherDisplay.prototype._renderComparism = function () {
+    var comparism = this._comparism,
+        currentData = this._data,
+        comparismText  = '',
         temperatureDiff;
 
     temperatureDiff = currentData.temperature.celsius -
@@ -73,15 +88,6 @@ WW.WeatherDisplay.prototype._render = function () {
     }
 
     comparism.text(comparismText);
-
-    icon.attr('class', this._getWeatherIconClass(currentData.icon));
-
-    map.setCenter({
-        lat: currentData.latitude,
-        lng: currentData.longitude
-    });
-
-    rootView.removeClass('invisible');
 };
 
 WW.WeatherDisplay.prototype._getWeatherIconClass = function (icon) {
