@@ -2,11 +2,11 @@
     margin: 20px 0;
 }
 
-#map-canvas {
+.weather-display-map {
     height: 200px;
 }
 
-#tempature {
+.weather-display-temperature {
     font-size: 50px;
     margin-top: 50px;
 }

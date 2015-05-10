@@ -31,18 +31,18 @@
             </div>
         </div>
 
-        <div id="results" class="invisible">
+        <div id="weather-display" class="invisible">
             <div class="row">
                 <div class="col-md-2 col-md-offset-3">
-                    <div id="tempature">99</div>
-                    <div id="summary"></div>
-                    <div id="comparism"></div>
+                    <div class="weather-display-temperature">99</div>
+                    <div class="weather-display-summary"></div>
+                    <div class="weather-display-comparism"></div>
                 </div>
                 <div class="col-md-1 ">
-                    <i id="weather-icon" class="pull-right weather-icon wi wi-day-lightning"></i>
+                    <i class="weather-display-icon"></i>
                 </div>
                 <div class="col-md-3">
-                    <div id="map-canvas"></div>
+                    <div class="weather-display-map"></div>
                 </div>
             </div>
             <div class="row">
@@ -62,6 +62,8 @@
         <script src="https://maps.googleapis.com/maps/api/js"></script>
         <script src="/shared/icons.js"></script>
         <script src="/shared/api.js"></script>
+        <script src="/js/WW.js"></script>
+        <script src="/js/WW/WeatherDisplay.js"></script>
         <script src="/js/main.js"></script>
     </body>
 </html>
