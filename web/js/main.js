@@ -3,8 +3,7 @@
 $(function () {
     var searchForm = $('#search-form'),
         searchField = $('#search-field'),
-        unitSelector = $('#unit-selector'),
-        unitSelectorButtons = unitSelector.find('button'),
+        unitSelector = new WW.ButtonGroupSelect($('#unit-selector')),
         model = new WW.WeatherModel(),
         display = new WW.WeatherDisplay($('#weather-display'), model.getUnit());
 
@@ -13,20 +12,15 @@ $(function () {
         return false;
     });
     
+    unitSelector.onValueUpdate(function (value) {
+        model.setUnit(value);
+    });
+    
     model.onDataUpdate(function (data) {
         display.setData(data);
     });
     
     model.onUnitUpdate(function (unit) {
         display.setUnit(unit);
-    });
-
-    unitSelector.on('click', 'button', function () {
-        var element = $(this);
-
-        model.setUnit(element.data('value'));
-        
-        unitSelectorButtons.removeClass('active');
-        element.addClass('active');        
     });
 });
