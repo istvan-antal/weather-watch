@@ -1,4 +1,4 @@
-/* global google, api, WW  */
+/* global api, WW  */
 
 $(function () {
     var searchForm = $('#search-form'),
