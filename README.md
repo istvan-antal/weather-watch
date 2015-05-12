@@ -11,19 +11,19 @@
 ```bash
 make init-dev
 make build
-echo -e 'TARGET_HOST := yourhost\nTARGET_DIR := /path/to/weather-watch' > Makefile.config1
+echo -e 'TARGET_HOST := yourhost\nTARGET_DIR := /path/to/weather-watch' > Makefile.config
 ```
 
 Customize: config.php
 
 # Launching on AWS
 
-Setup blueprint: https://github.com/istvan-antal/blueprint
+Setup constructor: https://github.com/istvan-antal/constructor
 
 and run:
 
 ```bash
-make infrastructure 
+construct
 ```
 
 Git  hook setup

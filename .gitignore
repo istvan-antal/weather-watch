@@ -6,5 +6,5 @@
 /node_modules
 /web/bower_components
 /vendor
-/dev/blueprint
+/blueprint.pyc
 /nbproject
